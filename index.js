@@ -127,6 +127,8 @@ function Game() {
             let yourScoreP = document.createElement("p")
             yourScoreP.innerHTML = `Your score: ${this.response.score}%`
 
+            let tomorrowP = document.createElement("p")
+            tomorrowP.innerHTML = `There will be a new grid tomorrow!`
 
             let copyForm = document.createElement("form")
             copyForm.setAttribute("action", "#")
@@ -147,6 +149,7 @@ function Game() {
             gameEndedBanner.appendChild(yourGuessP)
             gameEndedBanner.appendChild(yourScoreP)
             gameEndedBanner.appendChild(copyForm)
+            gameEndedBanner.appendChild(tomorrowP)
             gameEndedBanner.classList.add("centerBlock", "gameEndedBanner")
 
             gameBoard.appendChild(gameEndedBanner)
