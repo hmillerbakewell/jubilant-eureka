@@ -1,0 +1,71 @@
+<head>
+    <title>Spiderweb: Find the center word</title>
+    <script src="index.js"></script>
+    <link href="index.css" rel="stylesheet" />
+    <link href="normalize.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="board" class="centerBlock">
+        Data currently loading.
+    </div>
+    <div id="chainInfo" class="centerBlock">
+    </div>
+    <div id="info" class="centerBlock">
+        <hr>
+        <p>
+            Click the word at the center of the web!
+            You get one guess.
+            All the words in the grid are related to the target word by a series of at most two links.
+            Valid links are:
+        </p>
+        <p>
+        <ul>
+            <li>
+                <p>Synonyms: The two words share a meaning.</p>
+                <p>
+                    <span class="word">Frank</span> and <span class="word">Blunt</span>
+                    both admit a variety of meanings,
+                    but are directly linked because "to speak frankly" and "to speak bluntly" are synonymous.
+                </p>
+            </li>
+            <li>
+                <p>Hyper- and Hypo- nyms: One word is an example of another word.</p>
+                <p>
+                    <span class="word">Sublime</span> (the verb) is an example of <span class="word">Change</span>.
+                </p>
+            </li>
+        </ul>
+        </p>
+        <p>
+            Each word has a fixed meaning,
+            so if the word <span class="word">Frank</span> (meaning to stamp) is used as a link
+            then it will always mean the act of stamping,
+            and never, for example, speaking frankly.
+            Any words used as linking words are also present in the grid.
+        </p>
+        <p>
+            You get full marks for guessing the center word.
+            You get half marks if your guess was one step from the center.
+            You get no marks if your guess was two steps from the center.
+        </p>
+        <p>
+            This game uses Wordnet for the chains of meanings (citation below),
+            and these have not been verified by the author.
+        </p>
+        <p> Acknowledgements:
+        <ul>
+            <li>
+                Princeton University "About WordNet." <a href="https://wordnet.princeton.edu/">WordNet</a>. Princeton
+                University. 2010.
+            </li>
+            <li>
+                The Moby Project, available from <a href="https://www.gutenberg.org/ebooks/3201">Project Gutenberg</a>.
+            </li>
+            <li>
+                Normalize.css, available from <a href="https://necolas.github.io/normalize.css/">necolas.github.io</a>.
+            </li>
+        </ul>
+        </p>
+    </div>
+</body>

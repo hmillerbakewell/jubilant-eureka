@@ -1,0 +1,44 @@
+.wordGrid {
+    display              : grid;
+    grid-template-columns: auto auto auto;
+}
+
+div.word {
+    border    : 1px solid black;
+    padding   : 1em;
+    text-align: center;
+    margin    : 2em;
+}
+
+.gameEndedBanner {
+    text-align: center;
+}
+
+span.word {
+    font-weight: bolder;
+}
+
+div.unguessed {
+    background-color: aliceblue;
+}
+
+div.far {
+    background-color: white;
+}
+
+div.near {
+    background-color: #f0f8ff;
+}
+
+div.exact {
+    background-color: #e0e0ff;
+}
+
+.link {
+    font-weight: bold;
+}
+
+.centerBlock {
+    max-width: 40em;
+    margin   : auto;
+}
