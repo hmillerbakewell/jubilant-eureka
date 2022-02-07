@@ -27,10 +27,15 @@ function load_data() {
 }
 
 function choose_web_index() {
+    let url = window.location.href
+    let parts = url.split("?")
+    if (parts.length > 1) {
+        return Number(parts[1])
+    }
     let now = new Date
     let today = new Date(now.getFullYear(), now.getMonth(), now.getDay())
     let date_as_number = Number(today) / (60 * 60 * 24 * 1000)
-    return date_as_number -2
+    return date_as_number - 2
 }
 
 function Response(word, accepted, score = 0) {
