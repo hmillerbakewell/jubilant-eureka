@@ -28,9 +28,11 @@ function load_data() {
 
 function choose_web_index() {
     let url = window.location.href
-    let parts = url.split("?")
+    let parts = url.split(/\?&#/)
     if (parts.length > 1) {
-        return Number(parts[1])
+        if (Number(parts[1]) != undefined) {
+            return Number(parts[1])
+        }
     }
     let now = new Date
     let today = new Date(now.getFullYear(), now.getMonth(), now.getDay())
@@ -50,9 +52,23 @@ function ChainInfo(word, chain) {
     this.pretty_chain = pretty_print_chain(chain)
 }
 
-function pretty_print_chain(chain) {
+function separate(chain) {
     link = /-\(([\w ]+)\)->/
     segments = chain.split(link)
+    return segments
+}
+
+function words_in_path(chain) {
+    segments = separate(chain)
+    let root_words = []
+    for (let i = 0; i < segments.length; i += 2) {
+        root_words.push(segments[i].split(":")[0].replace(/\W/, ""))
+    }
+    return root_words
+}
+
+function pretty_print_chain(chain) {
+    let segments = separate(chain)
     withClasses = "<ul>"
     for (let i = 0; i < segments.length; i += 2) {
         withClasses += `<li><span class="definition">${segments[i]}</span>`
@@ -83,18 +99,32 @@ function Game() {
         if (!this.ended) {
             return ""
         }
-        let score = ""
-        switch (this.response.score) {
-            case 0:
-                score = "⬜🪰"
-                break;
-            case 50:
-                score = "🟦🪰"
-                break;
-            case 100:
-                score = "🟪🕷"
-                break;
-        }
+
+        let cobweb = "🕸"
+        let fly = "🪰"
+        let spider = "🕷"
+
+
+        let field = new Array(9).fill(cobweb)
+
+        let word_positions = {}
+
+        this.words.forEach((word, index) => { word_positions[word] = index })
+
+        let path = words_in_path(this.web[this.response.word].d)
+
+        console.log(path)
+
+        path.forEach((word, index) => {
+            if (index == 0) {
+                field[word_positions[word]] = spider
+            } else {
+                field[word_positions[word]] = fly
+            }
+        })
+
+        let score = [0, 1, 2].map(i => field.slice(i * 3, (i + 1) * 3).join("")).join("\n")
+
         return score
     }
     this.copyOutcome = function () {
