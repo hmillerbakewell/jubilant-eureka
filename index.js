@@ -28,10 +28,11 @@ function load_data() {
 
 function choose_web_index() {
     let url = window.location.href
-    let parts = url.split(/\?&#/)
+    let parts = url.split(/[\?&#]/)
     if (parts.length > 1) {
-        if (Number(parts[1]) != undefined) {
-            return Number(parts[1])
+        let inferred = Number(parts[1])
+        if (inferred != undefined) {
+            return inferred
         }
     }
     let now = new Date
@@ -112,8 +113,6 @@ function Game() {
         this.words.forEach((word, index) => { word_positions[word] = index })
 
         let path = words_in_path(this.web[this.response.word].d)
-
-        console.log(path)
 
         path.forEach((word, index) => {
             if (index == 0) {
