@@ -35,7 +35,7 @@ function choose_web_index() {
     let now = new Date
     let today = new Date(now.getFullYear(), now.getMonth(), now.getDay())
     let date_as_number = Number(today) / (60 * 60 * 24 * 1000)
-    return date_as_number - 2
+    return date_as_number
 }
 
 function Response(word, accepted, score = 0) {
